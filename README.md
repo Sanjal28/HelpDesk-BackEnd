@@ -24,7 +24,7 @@ The frontend client is maintained in a separate repository:
 ## Getting Started
 
 Make sure you have the following `.env` variables configured:
-PORT=your_port_number
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
+- PORT=your_port_number
+- MONGO_URI=your_mongodb_connection_string
+- JWT_SECRET=your_jwt_secret_key
 
