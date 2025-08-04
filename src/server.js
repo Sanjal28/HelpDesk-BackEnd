@@ -39,6 +39,7 @@ app.use(express.urlencoded({ extended: false }))
 // Routes endpoints
 app.use('/api/users', require('./routes/userRoutes'))
 app.use('/api/tickets', require('./routes/ticketRoutes'))
+app.use('/api/superagent', require('./routes/superAgentRoutes'))
 
 // Serve Frontend
 if (process.env.NODE_ENV === 'production') {

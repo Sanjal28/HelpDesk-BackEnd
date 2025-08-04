@@ -2,28 +2,26 @@ const express = require('express')
 const router = express.Router()
 const {
   getTickets,
-  getTicket,
   createTicket,
+  getTicket,
+  deleteTicket,
   updateTicket,
-  deleteTicket
 } = require('../controllers/ticketController')
 
 const { protect } = require('../middleware/authMiddleware')
 
-// Re-route into note router
-const noteRouter = require('./noteRoutes')
-router.use('/:ticketId/notes', noteRouter)
+// NOTE: We no longer import noteController here.
+// Instead, we will re-route to a dedicated note router.
 
-// Protected route to create the ticket
-router
-  .route('/')
-  .get(protect, getTickets)
-  .post(protect, createTicket)
+router.route('/').get(protect, getTickets).post(protect, createTicket)
 
 router
   .route('/:id')
   .get(protect, getTicket)
   .delete(protect, deleteTicket)
   .put(protect, updateTicket)
+  
+// Re-route requests for /:ticketId/notes into noteRouter
+router.use('/:ticketId/notes', require('./noteRoutes'))
 
 module.exports = router

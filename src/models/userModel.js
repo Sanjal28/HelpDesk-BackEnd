@@ -15,10 +15,10 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, 'Please add a password']
     },
-    isAdmin: {
-      type: Boolean,
-      required: true,
-      default: false
+    role: {
+      type: String,
+      enum: ['user', 'superAgent'],
+      default: 'user'
     }
   },
   {
